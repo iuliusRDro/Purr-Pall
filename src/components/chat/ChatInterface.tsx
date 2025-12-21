@@ -33,7 +33,7 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
     const userMsg: Message = {
       id: Date.now().toString(),
       sender: "user",
-      text: inputText,
+      text: inputText.trim(),
       timestamp: new Date(),
     };
 
@@ -140,19 +140,31 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
       {/* Input */}
       <form
         onSubmit={sendMessage}
-        className="p-3 bg-white border-t border-latte-cream flex gap-2"
+        className="p-3 bg-white border-t border-latte-cream flex items-center gap-2"
       >
-        <input
-          type="text"
-          value={inputText}
-          onChange={(e) => setInputText(e.target.value)}
-          placeholder="Type a message..."
-          className="flex-1 bg-latte-white border-none rounded-full px-4 text-sm focus:outline-none focus:ring-2 focus:ring-latte-cream text-latte-espresso placeholder:text-latte-brown/50"
-        />
+        <div className="flex-1 relative">
+          <input
+            type="text"
+            value={inputText}
+            maxLength={500}
+            onChange={(e) => setInputText(e.target.value)}
+            placeholder="Type a message..."
+            className="w-full bg-latte-white border-none rounded-full pl-4 pr-16 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-latte-cream text-latte-espresso placeholder:text-latte-brown/50"
+          />
+          <span
+            className={`absolute right-3 top-1/2 -translate-y-1/2 text-xs transition-colors pointer-events-none ${
+              inputText.length > 450
+                ? "text-red-500 font-bold"
+                : "text-latte-brown/50"
+            }`}
+          >
+            {inputText.length}/500
+          </span>
+        </div>
         <button
           type="submit"
           disabled={!inputText.trim()}
-          className="p-2 rounded-full bg-latte-espresso text-white disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95 transition-all"
+          className="p-2 rounded-full bg-latte-espresso text-white disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95 transition-all shrink-0"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
