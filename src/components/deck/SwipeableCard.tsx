@@ -7,12 +7,12 @@ import Image from "next/image";
 
 interface SwipeableCardProps {
   data: Cat;
-  onSwipe: (direction: "left" | "right") => void;
+  onSwipe: (direction: "left" | "right", cat: Cat) => void;
   style?: React.CSSProperties;
   priority?: boolean;
 }
 
-export default function SwipeableCard({
+const SwipeableCard = React.memo(function SwipeableCard({
   data,
   onSwipe,
   style,
@@ -31,9 +31,9 @@ export default function SwipeableCard({
   ) => {
     const threshold = 100;
     if (info.offset.x > threshold) {
-      onSwipe("right");
+      onSwipe("right", data);
     } else if (info.offset.x < -threshold) {
-      onSwipe("left");
+      onSwipe("left", data);
     }
   };
 
@@ -96,4 +96,6 @@ export default function SwipeableCard({
       </motion.div>
     </motion.div>
   );
-}
+});
+
+export default SwipeableCard;
