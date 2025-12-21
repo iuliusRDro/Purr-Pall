@@ -111,6 +111,7 @@ export default function CardDeck() {
           key={activeCat.id}
           data={activeCat}
           onSwipe={handleSwipe}
+          priority={true}
         />
       </AnimatePresence>
     </div>

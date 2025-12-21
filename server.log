@@ -1,0 +1,13 @@
+
+> purr-pals@0.1.0 dev
+> next dev
+
+▲ Next.js 16.1.0 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.0.2:3000
+
+✓ Starting...
+✓ Ready in 1209ms
+○ Compiling / ...
+Missing Supabase environment variables. App will run in Mock Mode.
+ GET / 200 in 7.7s (compile: 7.1s, render: 570ms)
