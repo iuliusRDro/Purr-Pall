@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --color-latte-brown: #6f4e37;
+  --color-latte-cream: #f5f5dc;
+  --color-latte-white: #fafaf9;
+  --color-latte-espresso: #3e2723;
+  --color-background: var(--color-latte-white);
+  --color-foreground: var(--color-latte-espresso);
+
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+
+  /* Overrides for default radius if needed, or just usage */
+  --radius: var(--radius-xl);
+}
+
+:root {
+  --background: #fafaf9;
+  --foreground: #3e2723;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
