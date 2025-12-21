@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Cat, MOCK_CATS } from "@/types/cat";
+import Image from "next/image";
 
 interface MatchesListProps {
   onSelectMatch: (cat: Cat) => void;
@@ -30,11 +31,16 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
             className="flex flex-col items-center gap-2 min-w-20 snap-start"
           >
             <div className="relative">
-              <div
-                className="w-20 h-20 rounded-full bg-cover bg-center border-4 border-white shadow-md"
-                style={{ backgroundImage: `url(${cat.photoUrl})` }}
-              />
-              <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
+              <div className="relative w-20 h-20 rounded-full overflow-hidden border-4 border-white shadow-md">
+                <Image
+                  src={cat.photoUrl}
+                  alt={cat.name}
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+              </div>
+              <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full z-10"></div>
             </div>
             <span className="text-sm font-bold text-latte-espresso">
               {cat.name}
@@ -58,10 +64,15 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
             onClick={() => onSelectMatch(cat)}
             className="w-full bg-white p-3 rounded-2xl border border-latte-cream flex items-center gap-3 shadow-sm hover:translate-x-1 transition-transform"
           >
-            <div
-              className="w-14 h-14 rounded-full bg-cover bg-center shrink-0"
-              style={{ backgroundImage: `url(${cat.photoUrl})` }}
-            />
+            <div className="relative w-14 h-14 rounded-full overflow-hidden shrink-0">
+              <Image
+                src={cat.photoUrl}
+                alt={cat.name}
+                fill
+                className="object-cover"
+                sizes="56px"
+              />
+            </div>
             <div className="flex-1 text-left overflow-hidden">
               <div className="flex justify-between items-center mb-1">
                 <span className="font-bold text-latte-espresso">

@@ -3,17 +3,20 @@
 import React from "react";
 import { motion, useMotionValue, useTransform, PanInfo } from "framer-motion";
 import { Cat } from "@/types/cat";
+import Image from "next/image";
 
 interface SwipeableCardProps {
   data: Cat;
   onSwipe: (direction: "left" | "right") => void;
   style?: React.CSSProperties;
+  priority?: boolean;
 }
 
 export default function SwipeableCard({
   data,
   onSwipe,
   style,
+  priority = false,
 }: SwipeableCardProps) {
   const x = useMotionValue(0);
   const rotate = useTransform(x, [-200, 200], [-25, 25]);
@@ -44,10 +47,16 @@ export default function SwipeableCard({
       whileTap={{ scale: 1.05, cursor: "grabbing" }}
       className="absolute w-full max-w-sm aspect-3/4 bg-white rounded-3xl shadow-xl overflow-hidden cursor-grab touch-none origin-bottom border border-latte-cream select-none"
     >
-      <div
-        className="w-full h-3/4 bg-gray-200 bg-cover bg-center pointer-events-none"
-        style={{ backgroundImage: `url(${data.photoUrl})` }}
-      />
+      <div className="relative w-full h-3/4 bg-gray-200 pointer-events-none">
+        <Image
+          src={data.photoUrl}
+          alt={data.name}
+          fill
+          className="object-cover"
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, 384px"
+        />
+      </div>
 
       <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-linear-to-b from-white to-latte-white">
         <h2 className="text-2xl font-bold text-latte-espresso">
