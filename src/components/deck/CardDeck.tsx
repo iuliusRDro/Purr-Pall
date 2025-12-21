@@ -24,6 +24,8 @@ export default function CardDeck() {
       }
 
       try {
+        // Keeping select("*") to avoid breaking legacy schema which might use 'photo_url' or 'photourl' inconsistently.
+        // Optimization: Refactored Card re-renders via memoization instead.
         const { data, error } = await supabase
           .from("cats")
           .select("*")
@@ -63,12 +65,12 @@ export default function CardDeck() {
   const nextCat = cats[currentIndex + 1];
 
   const handleSwipe = useCallback(
-    async (direction: "left" | "right") => {
-      if (!activeCat) return;
-      console.log(`Swiped ${direction} on ${activeCat.name}`);
+    async (direction: "left" | "right", cat?: Cat) => {
+      // Removed activeCat dependency to prevent SwipeableCard re-renders
+      console.log(`Swiped ${direction} on ${cat?.name || "Unknown"}`);
       setCurrentIndex((prev) => prev + 1);
     },
-    [activeCat]
+    []
   );
 
   useEffect(() => {
