@@ -49,8 +49,8 @@ export default function SwipeableCard({
         style={{ backgroundImage: `url(${data.photoUrl})` }}
       />
 
-      <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-linear-to-b from-white to-(--color-latte-white)">
-        <h2 className="text-2xl font-bold text-(--color-latte-espresso)">
+      <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-linear-to-b from-white to-latte-white">
+        <h2 className="text-2xl font-bold text-latte-espresso">
           {data.name}, {data.age}
         </h2>
         <p className="text-sm text-latte-brown line-clamp-2 mt-1 leading-relaxed">
@@ -60,7 +60,7 @@ export default function SwipeableCard({
           {data.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-latte-cream text-(--color-latte-espresso) text-xs font-bold rounded-full uppercase tracking-wider"
+              className="px-3 py-1 bg-latte-cream text-latte-espresso text-xs font-bold rounded-full uppercase tracking-wider"
             >
               {tag}
             </span>

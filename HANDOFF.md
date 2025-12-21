@@ -11,6 +11,8 @@
 - **Built "Chat Interface" with auto-reply logic.**
 - **Refined Tailwind 4 utility classes (canonical syntax).**
 - **Resolved styling lint warnings across all components.**
+- **Synced with origin/main and fixed TypeScript/React lint errors in CardDeck.tsx.**
+- **Enforced Nunito font usage in globals.css.**
 
 **Next Steps:**
 
