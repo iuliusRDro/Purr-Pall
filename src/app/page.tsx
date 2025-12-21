@@ -51,7 +51,7 @@ export default function Home() {
             onClick={() => setCurrentView("deck")}
             className={`px-6 py-2 rounded-full font-bold transition-all ${
               currentView === "deck"
-                ? "bg-(--color-latte-espresso) text-white shadow-md"
+                ? "bg-latte-espresso text-white shadow-md"
                 : "text-latte-brown hover:bg-latte-cream"
             }`}
           >
@@ -61,7 +61,7 @@ export default function Home() {
             onClick={() => setCurrentView("matches")}
             className={`px-6 py-2 rounded-full font-bold transition-all ${
               currentView === "matches"
-                ? "bg-(--color-latte-espresso) text-white shadow-md"
+                ? "bg-latte-espresso text-white shadow-md"
                 : "text-latte-brown hover:bg-latte-cream"
             }`}
           >

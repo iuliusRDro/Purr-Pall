@@ -14,7 +14,7 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
 
   return (
     <div className="flex flex-col h-[70vh] w-full max-w-sm">
-      <h2 className="text-2xl font-bold text-(--color-latte-espresso) mb-4 px-2">
+      <h2 className="text-2xl font-bold text-latte-espresso mb-4 px-2">
         New Matches
       </h2>
 
@@ -36,14 +36,14 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
               />
               <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
             </div>
-            <span className="text-sm font-bold text-(--color-latte-espresso)">
+            <span className="text-sm font-bold text-latte-espresso">
               {cat.name}
             </span>
           </motion.button>
         ))}
       </div>
 
-      <h2 className="text-xl font-bold text-(--color-latte-espresso) mt-4 mb-2 px-2">
+      <h2 className="text-xl font-bold text-latte-espresso mt-4 mb-2 px-2">
         Messages
       </h2>
 
@@ -64,7 +64,7 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
             />
             <div className="flex-1 text-left overflow-hidden">
               <div className="flex justify-between items-center mb-1">
-                <span className="font-bold text-(--color-latte-espresso)">
+                <span className="font-bold text-latte-espresso">
                   {cat.name}
                 </span>
                 <span className="text-xs text-latte-brown text-opacity-60">

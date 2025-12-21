@@ -64,7 +64,7 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
   return (
     <div className="flex flex-col h-[70vh] w-full max-w-sm bg-white rounded-3xl shadow-xl overflow-hidden border border-latte-cream">
       {/* Header */}
-      <div className="bg-(--color-latte-white) p-4 flex items-center gap-3 border-b border-latte-cream relative z-10">
+      <div className="bg-latte-white p-4 flex items-center gap-3 border-b border-latte-cream relative z-10">
         <button
           onClick={onBack}
           className="p-2 -ml-2 rounded-full hover:bg-black/5 transition-colors text-latte-brown"
@@ -88,7 +88,7 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
           style={{ backgroundImage: `url(${match.photoUrl})` }}
         />
         <div>
-          <h3 className="font-bold text-(--color-latte-espresso) leading-none">
+          <h3 className="font-bold text-latte-espresso leading-none">
             {match.name}
           </h3>
           <p className="text-xs text-latte-brown">Online</p>
@@ -96,7 +96,7 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3 bg-(--color-latte-white)/50">
+      <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-3 bg-latte-white/50">
         {messages.length === 0 && (
           <div className="flex-1 flex flex-col items-center justify-center text-center opacity-40">
             <div className="text-4xl mb-2">👋</div>
@@ -112,8 +112,8 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               className={`max-w-[80%] px-4 py-2 rounded-2xl text-sm ${
                 msg.sender === "user"
-                  ? "bg-(--color-latte-espresso) text-white self-end rounded-tr-sm"
-                  : "bg-white border border-latte-cream text-(--color-latte-espresso) self-start rounded-tl-sm shadow-sm"
+                  ? "bg-latte-espresso text-white self-end rounded-tr-sm"
+                  : "bg-white border border-latte-cream text-latte-espresso self-start rounded-tl-sm shadow-sm"
               }`}
             >
               {msg.text}
@@ -125,7 +125,7 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="bg-white border border-latte-cream text-(--color-latte-espresso) self-start px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm"
+            className="bg-white border border-latte-cream text-latte-espresso self-start px-4 py-3 rounded-2xl rounded-tl-sm shadow-sm"
           >
             <div className="flex gap-1">
               <span className="w-1.5 h-1.5 bg-latte-brown rounded-full animate-bounce [animation-delay:-0.3s]"></span>
@@ -147,12 +147,12 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
           placeholder="Type a message..."
-          className="flex-1 bg-(--color-latte-white) border-none rounded-full px-4 text-sm focus:outline-none focus:ring-2 focus:ring-latte-cream text-(--color-latte-espresso) placeholder:text-latte-brown/50"
+          className="flex-1 bg-latte-white border-none rounded-full px-4 text-sm focus:outline-none focus:ring-2 focus:ring-latte-cream text-latte-espresso placeholder:text-latte-brown/50"
         />
         <button
           type="submit"
           disabled={!inputText.trim()}
-          className="p-2 rounded-full bg-(--color-latte-espresso) text-white disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95 transition-all"
+          className="p-2 rounded-full bg-latte-espresso text-white disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 active:scale-95 transition-all"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

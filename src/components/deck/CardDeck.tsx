@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
-import { Cat, MOCK_CATS } from "@/types/cat";
+import { Cat, MOCK_CATS, DatabaseCat } from "@/types/cat";
 import SwipeableCard from "./SwipeableCard";
 import { supabase } from "@/utils/supabase";
 
@@ -37,7 +37,7 @@ export default function CardDeck() {
           setCats(MOCK_CATS);
         } else {
           // Map DB snake_case to CamelCase
-          const mappedCats: Cat[] = data.map((d: any) => ({
+          const mappedCats: Cat[] = (data as DatabaseCat[]).map((d) => ({
             id: d.id,
             name: d.name,
             age: d.age,
@@ -79,15 +79,15 @@ export default function CardDeck() {
   if (!activeCat) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] text-center p-6">
-        <h2 className="text-2xl font-bold text-(--color-latte-espresso) mb-2">
+        <h2 className="text-2xl font-bold text-latte-espresso mb-2">
           No more cats!
         </h2>
         <p className="text-latte-brown text-lg">
-          You've viewed all the furry friends nearby.
+          You&apos;ve viewed all the furry friends nearby.
         </p>
         <button
           onClick={() => setCurrentIndex(0)}
-          className="mt-6 px-6 py-3 bg-(--color-latte-espresso) text-white rounded-full font-bold shadow-lg hover:scale-105 transition-transform active:scale-95"
+          className="mt-6 px-6 py-3 bg-latte-espresso text-white rounded-full font-bold shadow-lg hover:scale-105 transition-transform active:scale-95"
         >
           Start Over
         </button>

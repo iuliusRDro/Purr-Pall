@@ -8,6 +8,17 @@ export interface Cat {
   distance: number; // km away
 }
 
+export interface DatabaseCat {
+  id: string;
+  name: string;
+  age: number;
+  bio: string;
+  photo_url?: string;
+  photourl?: string;
+  tags?: string[];
+  distance?: number;
+}
+
 export interface Match {
   id: string;
   catId: string;
