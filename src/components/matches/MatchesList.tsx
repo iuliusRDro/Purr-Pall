@@ -14,7 +14,7 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
 
   return (
     <div className="flex flex-col h-[70vh] w-full max-w-sm">
-      <h2 className="text-2xl font-bold text-[var(--color-latte-espresso)] mb-4 px-2">
+      <h2 className="text-2xl font-bold text-(--color-latte-espresso) mb-4 px-2">
         New Matches
       </h2>
 
@@ -27,7 +27,7 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: index * 0.1 }}
             onClick={() => onSelectMatch(cat)}
-            className="flex flex-col items-center gap-2 min-w-[5rem] snap-start"
+            className="flex flex-col items-center gap-2 min-w-20 snap-start"
           >
             <div className="relative">
               <div
@@ -36,14 +36,14 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
               />
               <div className="absolute bottom-0 right-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
             </div>
-            <span className="text-sm font-bold text-[var(--color-latte-espresso)]">
+            <span className="text-sm font-bold text-(--color-latte-espresso)">
               {cat.name}
             </span>
           </motion.button>
         ))}
       </div>
 
-      <h2 className="text-xl font-bold text-[var(--color-latte-espresso)] mt-4 mb-2 px-2">
+      <h2 className="text-xl font-bold text-(--color-latte-espresso) mt-4 mb-2 px-2">
         Messages
       </h2>
 
@@ -56,7 +56,7 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 + index * 0.1 }}
             onClick={() => onSelectMatch(cat)}
-            className="w-full bg-white p-3 rounded-2xl border border-[var(--color-latte-cream)] flex items-center gap-3 shadow-sm hover:translate-x-1 transition-transform"
+            className="w-full bg-white p-3 rounded-2xl border border-latte-cream flex items-center gap-3 shadow-sm hover:translate-x-1 transition-transform"
           >
             <div
               className="w-14 h-14 rounded-full bg-cover bg-center shrink-0"
@@ -64,15 +64,15 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
             />
             <div className="flex-1 text-left overflow-hidden">
               <div className="flex justify-between items-center mb-1">
-                <span className="font-bold text-[var(--color-latte-espresso)]">
+                <span className="font-bold text-(--color-latte-espresso)">
                   {cat.name}
                 </span>
-                <span className="text-xs text-[var(--color-latte-brown)] text-opacity-60">
+                <span className="text-xs text-latte-brown text-opacity-60">
                   Now
                 </span>
               </div>
-              <p className="text-sm text-[var(--color-latte-brown)] truncate">
-                {index === 0 ? "Purrrrr..." : "Meow! How are you?"}
+              <p className="text-sm text-latte-brown truncate">
+                {index === 0 ? "Purr..." : "Meow! How are you?"}
               </p>
             </div>
           </motion.button>

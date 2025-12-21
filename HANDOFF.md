@@ -9,6 +9,8 @@
 - Connected Supabase Client (Safe Mode).
 - **Implemented "Matches" view with horizontal scroll.**
 - **Built "Chat Interface" with auto-reply logic.**
+- **Refined Tailwind 4 utility classes (canonical syntax).**
+- **Resolved styling lint warnings across all components.**
 
 **Next Steps:**
 

@@ -42,25 +42,25 @@ export default function SwipeableCard({
       dragElastic={0.6}
       onDragEnd={handleDragEnd}
       whileTap={{ scale: 1.05, cursor: "grabbing" }}
-      className="absolute w-full max-w-sm aspect-[3/4] bg-white rounded-3xl shadow-xl overflow-hidden cursor-grab touch-none origin-bottom border border-[var(--color-latte-cream)] select-none"
+      className="absolute w-full max-w-sm aspect-3/4 bg-white rounded-3xl shadow-xl overflow-hidden cursor-grab touch-none origin-bottom border border-latte-cream select-none"
     >
       <div
         className="w-full h-3/4 bg-gray-200 bg-cover bg-center pointer-events-none"
         style={{ backgroundImage: `url(${data.photoUrl})` }}
       />
 
-      <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-linear-to-b from-white to-[var(--color-latte-white)]">
-        <h2 className="text-2xl font-bold text-[var(--color-latte-espresso)]">
+      <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-linear-to-b from-white to-(--color-latte-white)">
+        <h2 className="text-2xl font-bold text-(--color-latte-espresso)">
           {data.name}, {data.age}
         </h2>
-        <p className="text-sm text-[var(--color-latte-brown)] line-clamp-2 mt-1 leading-relaxed">
+        <p className="text-sm text-latte-brown line-clamp-2 mt-1 leading-relaxed">
           {data.bio}
         </p>
         <div className="flex gap-2 mt-3 overflow-hidden">
           {data.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-[var(--color-latte-cream)] text-[var(--color-latte-espresso)] text-xs font-bold rounded-full uppercase tracking-wider"
+              className="px-3 py-1 bg-latte-cream text-(--color-latte-espresso) text-xs font-bold rounded-full uppercase tracking-wider"
             >
               {tag}
             </span>

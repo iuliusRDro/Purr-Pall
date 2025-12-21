@@ -46,13 +46,13 @@ export default function Home() {
 
       {/* Navigation Tabs (Hidden in Chat) */}
       {currentView !== "chat" && (
-        <nav className="fixed bottom-6 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-[var(--color-latte-cream)] p-1 flex gap-1 z-50">
+        <nav className="fixed bottom-6 bg-white/90 backdrop-blur-md rounded-full shadow-lg border border-latte-cream p-1 flex gap-1 z-50">
           <button
             onClick={() => setCurrentView("deck")}
             className={`px-6 py-2 rounded-full font-bold transition-all ${
               currentView === "deck"
-                ? "bg-[var(--color-latte-espresso)] text-white shadow-md"
-                : "text-[var(--color-latte-brown)] hover:bg-[var(--color-latte-cream)]"
+                ? "bg-(--color-latte-espresso) text-white shadow-md"
+                : "text-latte-brown hover:bg-latte-cream"
             }`}
           >
             Explore
@@ -61,8 +61,8 @@ export default function Home() {
             onClick={() => setCurrentView("matches")}
             className={`px-6 py-2 rounded-full font-bold transition-all ${
               currentView === "matches"
-                ? "bg-[var(--color-latte-espresso)] text-white shadow-md"
-                : "text-[var(--color-latte-brown)] hover:bg-[var(--color-latte-cream)]"
+                ? "bg-(--color-latte-espresso) text-white shadow-md"
+                : "text-latte-brown hover:bg-latte-cream"
             }`}
           >
             Matches

@@ -71,9 +71,7 @@ export default function CardDeck() {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh]">
         <div className="animate-bounce text-4xl mb-4">🐱</div>
-        <p className="text-[var(--color-latte-brown)] animate-pulse">
-          Summoning cats...
-        </p>
+        <p className="text-latte-brown animate-pulse">Summoning cats...</p>
       </div>
     );
   }
@@ -81,15 +79,15 @@ export default function CardDeck() {
   if (!activeCat) {
     return (
       <div className="flex flex-col items-center justify-center h-[60vh] text-center p-6">
-        <h2 className="text-2xl font-bold text-[var(--color-latte-espresso)] mb-2">
+        <h2 className="text-2xl font-bold text-(--color-latte-espresso) mb-2">
           No more cats!
         </h2>
-        <p className="text-[var(--color-latte-brown)] text-lg">
+        <p className="text-latte-brown text-lg">
           You've viewed all the furry friends nearby.
         </p>
         <button
           onClick={() => setCurrentIndex(0)}
-          className="mt-6 px-6 py-3 bg-[var(--color-latte-espresso)] text-white rounded-full font-bold shadow-lg hover:scale-105 transition-transform active:scale-95"
+          className="mt-6 px-6 py-3 bg-(--color-latte-espresso) text-white rounded-full font-bold shadow-lg hover:scale-105 transition-transform active:scale-95"
         >
           Start Over
         </button>
@@ -98,7 +96,7 @@ export default function CardDeck() {
   }
 
   return (
-    <div className="relative w-full max-w-sm aspect-[3/4] flex items-center justify-center">
+    <div className="relative w-full max-w-sm aspect-3/4 flex items-center justify-center">
       <AnimatePresence>
         {/* Render Next Card (Background) */}
         {nextCat && (
