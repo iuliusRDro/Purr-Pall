@@ -13,8 +13,10 @@
 - **Resolved styling lint warnings across all components.**
 - **Synced with origin/main and fixed TypeScript/React lint errors in CardDeck.tsx.**
 - **Enforced Nunito font usage in globals.css.**
+- **Implemented Agent Instruction Protocol (`AGENTS.md`) for cross-agent alignment.**
 
 ### 🎨 Aesthetics Log
+
 - **Tactile Card Deck:** Refined interaction buttons with "Plushie Physics" (Framer Motion spring animations) and warmer colors (Rose/Emerald) to replace harsh Red/Green.
 - **Hygge Loading State:** Replaced generic "Summoning cats..." text with a Latte-themed Skeleton Card loader.
 - **Cozy Empty State:** Added a gentle entry animation and a custom SVG icon for the "No more cats" state.
