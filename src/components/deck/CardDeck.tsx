@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { Cat, MOCK_CATS, DatabaseCat } from "@/types/cat";
 import SwipeableCard from "./SwipeableCard";
+import SkeletonCard from "./SkeletonCard";
 import { supabase } from "@/utils/supabase";
 
 export default function CardDeck() {
@@ -88,28 +89,52 @@ export default function CardDeck() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-[60vh]">
-        <div className="animate-bounce text-4xl mb-4">🐱</div>
-        <p className="text-latte-brown animate-pulse">Summoning cats...</p>
+      <div className="flex flex-col items-center justify-center h-[60vh] w-full max-w-sm">
+        <SkeletonCard />
+        <p className="mt-6 text-latte-brown font-bold animate-pulse">
+          Summoning cats...
+        </p>
       </div>
     );
   }
 
   if (!activeCat) {
     return (
-      <div className="flex flex-col items-center justify-center h-[60vh] text-center p-6">
+      <div className="flex flex-col items-center justify-center h-[60vh] text-center p-6 w-full max-w-sm">
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 20 }}
+          className="mb-6 p-4 bg-latte-white rounded-full shadow-inner"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-16 h-16 text-latte-brown opacity-60"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M16 16v1a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h2v-2" />
+            <path d="M8 20h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z" />
+          </svg>
+        </motion.div>
         <h2 className="text-2xl font-bold text-latte-espresso mb-2">
           No more cats!
         </h2>
         <p className="text-latte-brown text-lg">
           You&apos;ve viewed all the furry friends nearby.
         </p>
-        <button
+        <motion.button
           onClick={() => setCurrentIndex(0)}
-          className="mt-6 px-6 py-3 bg-latte-espresso text-white rounded-full font-bold shadow-lg hover:scale-105 transition-transform active:scale-95"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          className="mt-6 px-6 py-3 bg-latte-espresso text-latte-white rounded-full font-bold shadow-lg cursor-pointer hover:bg-opacity-90 transition-colors"
         >
           Start Over
-        </button>
+        </motion.button>
       </div>
     );
   }
@@ -136,10 +161,13 @@ export default function CardDeck() {
 
       {/* Interaction Buttons */}
       <div className="absolute -bottom-24 flex gap-8 z-50">
-        <button
+        <motion.button
           onClick={() => handleSwipe("left")}
           aria-label="Pass"
-          className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-red-500 hover:scale-110 hover:bg-red-50 active:scale-95 transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-red-200 cursor-pointer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="w-16 h-16 bg-latte-white rounded-full shadow-lg flex items-center justify-center text-rose-500 hover:bg-rose-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-latte-brown cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -155,12 +183,15 @@ export default function CardDeck() {
             <path d="M18 6 6 18" />
             <path d="m6 6 12 12" />
           </svg>
-        </button>
+        </motion.button>
 
-        <button
+        <motion.button
           onClick={() => handleSwipe("right")}
           aria-label="Like"
-          className="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center text-green-500 hover:scale-110 hover:bg-green-50 active:scale-95 transition-all focus:outline-none focus-visible:ring-4 focus-visible:ring-green-200 cursor-pointer"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          transition={{ type: "spring", stiffness: 400, damping: 10 }}
+          className="w-16 h-16 bg-latte-white rounded-full shadow-lg flex items-center justify-center text-emerald-500 hover:bg-emerald-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-latte-brown cursor-pointer"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -175,7 +206,7 @@ export default function CardDeck() {
           >
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
           </svg>
-        </button>
+        </motion.button>
       </div>
     </div>
   );

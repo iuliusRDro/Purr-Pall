@@ -7,10 +7,12 @@
 - Network:       http://192.168.0.2:3000
 
 ✓ Starting...
-✓ Ready in 2.1s
+✓ Ready in 1073ms
 ○ Compiling / ...
 Missing Supabase environment variables. App will run in Mock Mode.
- GET / 200 in 6.9s (compile: 6.3s, render: 623ms)
- GET / 200 in 76ms (compile: 9ms, render: 67ms)
+ GET / 200 in 6.9s (compile: 6.3s, render: 536ms)
+ GET / 200 in 86ms (compile: 9ms, render: 77ms)
 ⨯ upstream image response failed for https://images.unsplash.com/photo-1495360019602-e001c276375f?w=800&q=80 404
 ⨯ upstream image response failed for https://images.unsplash.com/photo-1495360019602-e001c276375f?w=800&q=80 404
+⨯ upstream image response failed for https://images.unsplash.com/photo-1529778873920-4da4926a7071?w=800&q=80 404
+⨯ upstream image response failed for https://images.unsplash.com/photo-1529778873920-4da4926a7071?w=800&q=80 404
