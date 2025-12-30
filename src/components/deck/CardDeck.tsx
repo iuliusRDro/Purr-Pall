@@ -25,11 +25,10 @@ export default function CardDeck() {
       }
 
       try {
-        // Keeping select("*") to avoid breaking legacy schema which might use 'photo_url' or 'photourl' inconsistently.
-        // Optimization: Refactored Card re-renders via memoization instead.
+        // Standardized schema to use 'photo_url'
         const { data, error } = await supabase
           .from("cats")
-          .select("*")
+          .select("id, name, age, bio, photo_url, tags, distance")
           .limit(10);
 
         if (error || !data || data.length === 0) {
@@ -45,7 +44,7 @@ export default function CardDeck() {
             name: d.name,
             age: d.age,
             bio: d.bio,
-            photoUrl: d.photo_url || d.photourl || "",
+            photoUrl: d.photo_url,
             tags: d.tags || [],
             distance: d.distance || 0,
           }));
