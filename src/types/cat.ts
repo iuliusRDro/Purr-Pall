@@ -19,6 +19,15 @@ export interface DatabaseCat {
   distance?: number;
 }
 
+export interface DatabaseMatch {
+  id: string;
+  cat_id: string;
+  user_id: string;
+  created_at: string;
+  cat: DatabaseCat;
+  last_message?: string;
+}
+
 export interface Match {
   id: string;
   catId: string;
