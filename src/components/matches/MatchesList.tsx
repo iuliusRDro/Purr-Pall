@@ -60,7 +60,7 @@ export default function MatchesList({ onSelectMatch }: MatchesListProps) {
               name: m.cat.name,
               age: m.cat.age,
               bio: m.cat.bio,
-              photoUrl: m.cat.photo_url || m.cat.photourl || "",
+              photoUrl: m.cat.photo_url,
               tags: m.cat.tags || [],
               distance: m.cat.distance || 0,
             },

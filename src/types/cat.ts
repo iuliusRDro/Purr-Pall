@@ -13,8 +13,7 @@ export interface DatabaseCat {
   name: string;
   age: number;
   bio: string;
-  photo_url?: string;
-  photourl?: string;
+  photo_url: string;
   tags?: string[];
   distance?: number;
 }
