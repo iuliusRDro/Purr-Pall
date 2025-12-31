@@ -45,7 +45,7 @@ const SwipeableCard = React.memo(function SwipeableCard({
       dragElastic={0.6}
       onDragEnd={handleDragEnd}
       whileTap={{ scale: 1.05, cursor: "grabbing" }}
-      className="absolute w-full max-w-sm aspect-3/4 bg-white rounded-3xl shadow-xl overflow-hidden cursor-grab touch-none origin-bottom border border-latte-cream select-none"
+      className="absolute w-full max-w-sm aspect-3/4 glass-panel rounded-3xl overflow-hidden cursor-grab touch-none origin-bottom border border-white/60 select-none"
     >
       <div className="relative w-full h-3/4 bg-gray-200 pointer-events-none">
         <Image
@@ -56,20 +56,27 @@ const SwipeableCard = React.memo(function SwipeableCard({
           priority={priority}
           sizes="(max-width: 768px) 100vw, 384px"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
       </div>
 
-      <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-linear-to-b from-white to-latte-white">
-        <h2 className="text-2xl font-bold text-latte-espresso">
-          {data.name}, {data.age}
-        </h2>
-        <p className="text-sm text-latte-brown line-clamp-2 mt-1 leading-relaxed">
+      <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-white/80 backdrop-blur-md">
+        <div className="flex items-baseline justify-between">
+          <h2 className="text-3xl font-extrabold text-latte-espresso">
+            {data.name}
+            <span className="text-xl font-normal opacity-60 ml-2">
+              {data.age}
+            </span>
+          </h2>
+        </div>
+
+        <p className="text-sm text-latte-brown line-clamp-2 mt-1 leading-relaxed font-medium">
           {data.bio}
         </p>
         <div className="flex gap-2 mt-3 overflow-hidden">
           {data.tags.map((tag) => (
             <span
               key={tag}
-              className="px-3 py-1 bg-latte-cream text-latte-espresso text-xs font-bold rounded-full uppercase tracking-wider"
+              className="px-3 py-1 bg-latte-espresso/10 text-latte-espresso text-xs font-bold rounded-full uppercase tracking-wider"
             >
               {tag}
             </span>
@@ -77,20 +84,22 @@ const SwipeableCard = React.memo(function SwipeableCard({
         </div>
       </div>
 
+      {/* LIKE STAMP */}
       <motion.div
         style={{ opacity: likeOpacity }}
-        className="absolute top-8 left-8 border-4 border-green-500 rounded-lg px-4 py-1 -rotate-15 pointer-events-none z-10"
+        className="absolute top-8 left-8 border-4 border-emerald-400 bg-emerald-400/20 backdrop-blur-sm rounded-lg px-4 py-1 -rotate-15 pointer-events-none z-10 shadow-lg"
       >
-        <span className="text-green-500 font-extrabold text-3xl uppercase tracking-widest">
+        <span className="text-emerald-500 font-extrabold text-4xl uppercase tracking-widest drop-shadow-sm">
           Like
         </span>
       </motion.div>
 
+      {/* NOPE STAMP */}
       <motion.div
         style={{ opacity: nopeOpacity }}
-        className="absolute top-8 right-8 border-4 border-red-500 rounded-lg px-4 py-1 rotate-15 pointer-events-none z-10"
+        className="absolute top-8 right-8 border-4 border-rose-400 bg-rose-400/20 backdrop-blur-sm rounded-lg px-4 py-1 rotate-15 pointer-events-none z-10 shadow-lg"
       >
-        <span className="text-red-500 font-extrabold text-3xl uppercase tracking-widest">
+        <span className="text-rose-500 font-extrabold text-4xl uppercase tracking-widest drop-shadow-sm">
           Nope
         </span>
       </motion.div>
