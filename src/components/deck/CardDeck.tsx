@@ -14,7 +14,6 @@ export default function CardDeck() {
 
   useEffect(() => {
     async function fetchCats() {
-      // If Supabase is not configured, fall back to mock data immediately
       if (!supabase) {
         console.warn(
           "Supabase client not initialized (missing vars). Using mock data."
@@ -25,7 +24,6 @@ export default function CardDeck() {
       }
 
       try {
-        // Standardized schema to use 'photo_url'
         const { data, error } = await supabase
           .from("cats")
           .select("id, name, age, bio, photo_url, tags, distance")
@@ -38,7 +36,6 @@ export default function CardDeck() {
           );
           setCats(MOCK_CATS);
         } else {
-          // Map DB snake_case to CamelCase
           const mappedCats: Cat[] = (data as DatabaseCat[]).map((d) => ({
             id: d.id,
             name: d.name,
@@ -66,7 +63,6 @@ export default function CardDeck() {
 
   const handleSwipe = useCallback(
     async (direction: "left" | "right", cat?: Cat) => {
-      // Removed activeCat dependency to prevent SwipeableCard re-renders
       console.log(`Swiped ${direction} on ${cat?.name || "Unknown"}`);
       setCurrentIndex((prev) => prev + 1);
     },
@@ -88,7 +84,7 @@ export default function CardDeck() {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center h-[60vh] w-full max-w-sm">
+      <div className="flex flex-col items-center justify-center h-[65vh] w-full max-w-sm">
         <SkeletonCard />
         <p className="mt-6 text-latte-brown font-bold animate-pulse">
           Summoning cats...
@@ -99,20 +95,21 @@ export default function CardDeck() {
 
   if (!activeCat) {
     return (
-      <div className="flex flex-col items-center justify-center h-[60vh] text-center p-6 w-full max-w-sm">
+      <div className="flex flex-col items-center justify-center h-[65vh] text-center p-6 w-full max-w-sm">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="mb-6 p-4 bg-latte-white rounded-full shadow-inner"
+          className="mb-8 p-8 glass-panel rounded-full shadow-inner relative"
         >
+          <div className="absolute inset-0 bg-latte-cream/20 blur-xl rounded-full"></div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="w-16 h-16 text-latte-brown opacity-60"
+            className="w-20 h-20 text-latte-brown opacity-60 relative z-10"
             viewBox="0 0 24 24"
             fill="none"
             stroke="currentColor"
-            strokeWidth="2"
+            strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
           >
@@ -120,17 +117,17 @@ export default function CardDeck() {
             <path d="M8 20h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2Z" />
           </svg>
         </motion.div>
-        <h2 className="text-2xl font-bold text-latte-espresso mb-2">
-          No more cats!
+        <h2 className="text-3xl font-extrabold text-latte-espresso mb-3">
+          All Caught Up!
         </h2>
-        <p className="text-latte-brown text-lg">
-          You&apos;ve viewed all the furry friends nearby.
+        <p className="text-latte-brown text-lg max-w-62.5 mx-auto leading-relaxed">
+          You&apos;ve seen all the furry friends in your area. Check back soon!
         </p>
         <motion.button
           onClick={() => setCurrentIndex(0)}
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="mt-6 px-6 py-3 bg-latte-espresso text-latte-white rounded-full font-bold shadow-lg cursor-pointer hover:bg-opacity-90 transition-colors"
+          className="mt-8 px-8 py-3 bg-latte-espresso text-latte-white rounded-full font-bold shadow-xl shadow-latte-espresso/20 cursor-pointer hover:bg-opacity-90 transition-all"
         >
           Start Over
         </motion.button>
@@ -139,34 +136,43 @@ export default function CardDeck() {
   }
 
   return (
-    <div className="relative w-full max-w-sm aspect-3/4 flex items-center justify-center">
-      <AnimatePresence>
-        {/* Render Next Card (Background) */}
-        {nextCat && (
-          <div className="absolute top-0 left-0 w-full h-full scale-[0.95] translate-y-4 opacity-100 -z-10">
-            <SwipeableCard key={nextCat.id} data={nextCat} onSwipe={() => {}} />
-            <div className="absolute inset-0 bg-white/50 rounded-3xl z-10 pointer-events-none" />
-          </div>
-        )}
+    <div className="relative w-full max-w-sm aspect-3/5 flex flex-col items-center justify-center">
+      <div className="relative w-full aspect-3/4 mb-4">
+        <AnimatePresence>
+          {/* Render Next Card (Background) */}
+          {nextCat && (
+            <div className="absolute top-0 left-0 w-full h-full scale-[0.95] translate-y-4 opacity-100 -z-10 blur-[1px]">
+              <SwipeableCard
+                key={nextCat.id}
+                data={nextCat}
+                onSwipe={() => {}}
+              />
+              <div className="absolute inset-0 bg-white/40 rounded-3xl z-10 pointer-events-none" />
+            </div>
+          )}
 
-        {/* Render Active Card (Foreground) */}
-        <SwipeableCard
-          key={activeCat.id}
-          data={activeCat}
-          onSwipe={handleSwipe}
-          priority={true}
-        />
-      </AnimatePresence>
+          {/* Render Active Card (Foreground) */}
+          <SwipeableCard
+            key={activeCat.id}
+            data={activeCat}
+            onSwipe={handleSwipe}
+            priority={true}
+          />
+        </AnimatePresence>
+      </div>
 
       {/* Interaction Buttons */}
-      <div className="absolute -bottom-24 flex gap-8 z-50">
+      <div className="flex gap-6 mt-4 z-50">
         <motion.button
           onClick={() => handleSwipe("left")}
           aria-label="Pass"
-          whileHover={{ scale: 1.1 }}
+          whileHover={{
+            scale: 1.1,
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+          }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="w-16 h-16 bg-latte-white rounded-full shadow-lg flex items-center justify-center text-rose-500 hover:bg-rose-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-latte-brown cursor-pointer"
+          className="w-16 h-16 glass-button rounded-full flex items-center justify-center text-rose-500 hover:text-rose-600 shadow-lg hover:shadow-xl hover:shadow-rose-500/10 cursor-pointer border border-white/60"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -187,10 +193,13 @@ export default function CardDeck() {
         <motion.button
           onClick={() => handleSwipe("right")}
           aria-label="Like"
-          whileHover={{ scale: 1.1 }}
+          whileHover={{
+            scale: 1.1,
+            backgroundColor: "rgba(255, 255, 255, 0.9)",
+          }}
           whileTap={{ scale: 0.9 }}
           transition={{ type: "spring", stiffness: 400, damping: 10 }}
-          className="w-16 h-16 bg-latte-white rounded-full shadow-lg flex items-center justify-center text-emerald-500 hover:bg-emerald-50 focus:outline-none focus-visible:ring-4 focus-visible:ring-latte-brown cursor-pointer"
+          className="w-16 h-16 glass-button rounded-full flex items-center justify-center text-emerald-500 hover:text-emerald-600 shadow-lg hover:shadow-xl hover:shadow-emerald-500/10 cursor-pointer border border-white/60"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

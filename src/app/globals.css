@@ -10,14 +10,42 @@
 
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
 
-  /* Overrides for default radius if needed, or just usage */
   --radius: var(--radius-xl);
+
+  --animate-float: float 6s ease-in-out infinite;
+}
+
+@layer utilities {
+  .glass-panel {
+    @apply bg-white/70 backdrop-blur-xl border border-white/50 shadow-xl;
+  }
+
+  .glass-button {
+    @apply bg-white/40 backdrop-blur-md border border-white/30 shadow-sm hover:bg-white/60 transition-all active:scale-95;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-latte-espresso to-latte-brown;
+  }
 }
 
 :root {
   --background: #fafaf9;
   --foreground: #3e2723;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
 body {
@@ -26,4 +54,12 @@ body {
   font-family: var(--font-nunito), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: radial-gradient(
+      at 0% 0%,
+      hsla(27, 51%, 90%, 1) 0,
+      transparent 50%
+    ),
+    radial-gradient(at 50% 0%, hsla(42, 50%, 92%, 1) 0, transparent 50%),
+    radial-gradient(at 100% 0%, hsla(27, 51%, 90%, 1) 0, transparent 50%);
+  background-attachment: fixed;
 }
