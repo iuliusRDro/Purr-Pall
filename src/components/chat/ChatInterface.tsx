@@ -108,7 +108,7 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4 bg-gradient-to-b from-white/20 to-transparent">
+      <div className="flex-1 overflow-y-auto p-4 flex flex-col gap-4 bg-linear-to-b from-white/20 to-transparent">
         {messages.length === 0 && (
           <div className="flex-1 flex flex-col items-center justify-center text-center opacity-50 p-8">
             <div className="text-6xl mb-4 grayscale opacity-80">👋</div>
@@ -165,7 +165,7 @@ export default function ChatInterface({ match, onBack }: ChatInterfaceProps) {
             <div className="flex gap-1 justify-center">
               <span className="w-1.5 h-1.5 bg-latte-brown rounded-full animate-[bounce_1s_infinite_-0.3s]"></span>
               <span className="w-1.5 h-1.5 bg-latte-brown rounded-full animate-[bounce_1s_infinite_-0.15s]"></span>
-              <span className="w-1.5 h-1.5 bg-latte-brown rounded-full animate-[bounce_1s_infinite]"></span>
+              <span className="w-1.5 h-1.5 bg-latte-brown rounded-full animate-bounce"></span>
             </div>
           </motion.div>
         )}

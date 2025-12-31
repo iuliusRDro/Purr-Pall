@@ -120,7 +120,7 @@ export default function CardDeck() {
         <h2 className="text-3xl font-extrabold text-latte-espresso mb-3">
           All Caught Up!
         </h2>
-        <p className="text-latte-brown text-lg max-w-[250px] mx-auto leading-relaxed">
+        <p className="text-latte-brown text-lg max-w-62.5 mx-auto leading-relaxed">
           You&apos;ve seen all the furry friends in your area. Check back soon!
         </p>
         <motion.button

@@ -56,7 +56,7 @@ const SwipeableCard = React.memo(function SwipeableCard({
           priority={priority}
           sizes="(max-width: 768px) 100vw, 384px"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-60" />
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent opacity-60" />
       </div>
 
       <div className="h-1/4 p-5 flex flex-col justify-center pointer-events-none bg-white/80 backdrop-blur-md">
