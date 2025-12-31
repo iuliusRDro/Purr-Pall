@@ -12,4 +12,5 @@
 
 ## Next Steps
 
-- Push changes to remote.
+- Squash and Merge Pull Request for `feature/update-dependencies`.
+- Pull `main` locally after merge.
